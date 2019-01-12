@@ -13,24 +13,25 @@
     <script src="https://cdn.bootcss.com/twitter-bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/4.2.1/css/bootstrap.css"
           crossorigin="anonymous">
-    <script src="https://cdn.bootcss.com/angular.js/1.7.5/angular.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.7.5/angular.js"></script>
     <!-- Custom styles for this template -->
     <!--<link href="css/cover.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="css/login.css">
 
 </head>
 
-<body ng-app="">
+<body ng-app="myApp">
 <ng-include src="'layout/nav.html'"></ng-include>
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
     <div class="login">
-        <form class="form-signin">
+        <form class="form-signin" ng-submit="submitForm()" ng-controller="loginController">
             <img class="mb-4" src="favicon.ico" alt="" width="72"
                  height="72">
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <label class="sr-only">Email address</label>
+            <input type="email" id="username" class="form-control" placeholder="Email address" ng-model="myform.username" required autofocus>
+            <label class="sr-only">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="Password" ng-model="myform.password" required>
             <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me"> Remember me
@@ -41,49 +42,33 @@
     </div>
     <ng-include src="'layout/footer.html'"/>
 </div>
-<style type="text/css">
-    .login {
-        display: -ms-flexbox;
-        display: -webkit-box;
-        display: flex;
-        -ms-flex-align: center;
-        -ms-flex-pack: center;
-        -webkit-box-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        justify-content: center;
-        padding-top: 40px;
-        padding-bottom: 40px;
-    }
-    .form-signin {
-        width: 100%;
-        max-width: 330px;
-        padding: 15px;
-        margin: 0 auto;
-    }
-    .form-signin .checkbox {
-        font-weight: 400;
-    }
-    .form-signin .form-control {
-        position: relative;
-        box-sizing: border-box;
-        height: auto;
-        padding: 10px;
-        font-size: 16px;
-    }
-    .form-signin .form-control:focus {
-        z-index: 2;
-    }
-    .form-signin input[type="email"] {
-        margin-bottom: -1px;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-    }
-    .form-signin input[type="password"] {
-        margin-bottom: 10px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-    }
-</style>
+<script>
+    var app = angular.module("myApp",[]);
+    app.controller('loginController',function ($scope,$http) {
+        $scope.submitForm = function () {
+            // console.log('enter submitForm');
+            $http({
+                method:'post',
+                url:'/api/authenticate',
+                data:$scope.myform,
+                // headers: {
+                //     'Content-Type': 'application/json'
+                // }
+            }).then(function(resp){
+                var token=resp.data.id_token;
+                // $http.defaults.headers.common.Authorization = 'Bearer '+ token;
+                sessionStorage.Authorization='Bearer '+ token;
+                // app.config(function($httpProvider) {
+                //     $httpProvider.defaults.headers.common["Authorization"] ='Bearer '+ token;
+                // });
+                window.location.href = '/home.html';
+                console.log(resp);
+            },function(resp){
+                alert("用户名或密码错误");
+                // console.log(resp);
+            });
+        }
+    });
+</script>
 </body>
 </html>
