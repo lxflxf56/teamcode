@@ -11,7 +11,7 @@
           crossorigin="anonymous">
     <title>Title</title>
     <!-- Custom styles for this template -->
-    <script src="js/global.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body ng-app="myApp">
@@ -25,30 +25,15 @@
 </main>
 
 <footer class="text-muted" ng-include="'layout/footer.html'"></footer>
-
 <script>
-    var app = angular.module("myApp",[]);
-    var Authorization=sessionStorage.Authorization;
-    console.log('Authorization:'+Authorization)
-    app.controller('accoutController',function ($scope,$http) {
-        $http({
-            method:'get',
-            url:'/api/account',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': Authorization
-            }
-        }).then(function(resp){
-            $scope.account = resp.data;
-            sessionStorage.account=resp.data;
-            console.log(resp);
-        },function(resp){
-            window.location.href = '/login.html';
-            console.log(resp);
-        });
-    });
+
+
 </script>
+
 <!-- Placed at the end of the document so the pages load faster -->
+<script src="js/global.js" crossorigin="anonymous"></script>
+<script src="js/auth.js"></script>
+<script src="js/account.js"></script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
         crossorigin="anonymous"></script>

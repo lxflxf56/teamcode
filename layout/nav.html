@@ -7,15 +7,12 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/home.html">Home <span class="sr-only">(current)</span></a>
             </li>
-            <!--<li class="nav-item">-->
-                <!--<a class="nav-link" href="#">Company</a>-->
-            <!--</li>-->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Company</a>
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Orgnazation</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">Create Company</a>
+                    <a class="dropdown-item" href="#">Create Orgnazation</a>
                     <a class="dropdown-item" href="#">Management Project</a>
                     <a class="dropdown-item" href="#">Management Staff</a>
                 </div>
@@ -36,7 +33,6 @@
             <li class="nav-item active">
                 <a class="nav-link" href="#">About Us</a>
             </li>
-
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -44,8 +40,9 @@
         </form>
         <ul class="navbar-nav mr-lg-0">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{account.login}}</a>
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{account.login||"account"}}</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown03">
+                    <a class="dropdown-item" href="/login.html">Log In</a>
                     <a class="dropdown-item" href="#">Profile</a>
                     <a class="dropdown-item" href="#">Password</a>
                     <a class="dropdown-item" href="#">Log Out</a>
@@ -54,3 +51,4 @@
         </ul>
     </div>
 </nav>
+

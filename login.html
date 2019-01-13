@@ -21,7 +21,7 @@
 </head>
 
 <body ng-app="myApp">
-<ng-include src="'layout/nav.html'"></ng-include>
+<div ng-include="'layout/nav.html'"></div>
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
     <div class="login">
         <form class="form-signin" ng-submit="submitForm()" ng-controller="loginController">
@@ -29,9 +29,11 @@
                  height="72">
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
             <label class="sr-only">Email address</label>
-            <input type="email" id="username" class="form-control" placeholder="Email address" ng-model="myform.username" required autofocus>
+            <input type="email" id="username" class="form-control" placeholder="Email address"
+                   ng-model="myform.username" required autofocus>
             <label class="sr-only">Password</label>
-            <input type="password" id="password" class="form-control" placeholder="Password" ng-model="myform.password" required>
+            <input type="password" id="password" class="form-control" placeholder="Password" ng-model="myform.password"
+                   required>
             <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me"> Remember me
@@ -43,28 +45,29 @@
     <ng-include src="'layout/footer.html'"/>
 </div>
 <script>
-    var app = angular.module("myApp",[]);
-    app.controller('loginController',function ($scope,$http) {
+    var app = angular.module("myApp", []);
+    app.controller('loginController', function ($scope, $http) {
         $scope.submitForm = function () {
             // console.log('enter submitForm');
             $http({
-                method:'post',
-                url:'/api/authenticate',
-                data:$scope.myform,
+                method: 'post',
+                url: '/api/authenticate',
+                data: $scope.myform,
                 // headers: {
                 //     'Content-Type': 'application/json'
                 // }
-            }).then(function(resp){
-                var token=resp.data.id_token;
+            }).then(function (resp) {
+                var token = resp.data.id_token;
                 // $http.defaults.headers.common.Authorization = 'Bearer '+ token;
-                sessionStorage.Authorization='Bearer '+ token;
+                sessionStorage.Authorization = 'Bearer ' + token;
                 // app.config(function($httpProvider) {
                 //     $httpProvider.defaults.headers.common["Authorization"] ='Bearer '+ token;
                 // });
                 window.location.href = '/home.html';
                 console.log(resp);
-            },function(resp){
+            }, function (resp) {
                 alert("用户名或密码错误");
+                sessionStorage.Authorization = null;
                 // console.log(resp);
             });
         }
