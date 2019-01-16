@@ -19,5 +19,6 @@ app.controller('accoutController',function ($scope,$http) {
         });
     }
     $scope.account=account;
+    $scope.hasaccount=true;
 });
 

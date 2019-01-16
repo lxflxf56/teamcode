@@ -13,8 +13,10 @@
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Orgnazation</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="#">Create Orgnazation</a>
-                    <a class="dropdown-item" href="#">Management Project</a>
-                    <a class="dropdown-item" href="#">Management Staff</a>
+                    <a class="dropdown-item" href="/orgnazation">Management Orgnazation</a>
+                    <a class="dropdown-item" href="#">Management Projects</a>
+                    <a class="dropdown-item" href="#">Management Staffs</a>
+                    <a class="dropdown-item" href="#">Management Team</a>
                 </div>
             </li>
 
@@ -25,16 +27,17 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Project</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown02">
-                    <a class="dropdown-item" href="#">Create Project</a>
-                    <a class="dropdown-item" href="#">Project Detail</a>
-                    <a class="dropdown-item" href="#">Management Project</a>
+                    <a class="dropdown-item" href="#">Create Projects</a>
+                    <a class="dropdown-item" href="#">My Projects</a>
+                    <a class="dropdown-item" href="#">Management Projects</a>
+                    <a class="dropdown-item" href="#">My Task</a>
                 </div>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#">About Us</a>
+                <a class="nav-link" href="/about.html">About Us</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <form class="form-inline mt-2 mt-md-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
@@ -42,10 +45,17 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{account.login||"account"}}</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown03">
-                    <a class="dropdown-item" href="/login.html">Log In</a>
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="#">Password</a>
-                    <a class="dropdown-item" href="#">Log Out</a>
+                    <input ng-model="hasaccount" value="false" hidden>
+                    <div ng-hide=!hasaccount>
+                        <a class="dropdown-item" href="/login.html">Log In</a>
+                        <a class="dropdown-item" href="/register.html">Register</a>
+                    </div>
+                    <div ng-hide=hasaccount>
+                        <a class="dropdown-item" href="#">Setting</a>
+                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="/changepassword.html">Password</a>
+                        <a class="dropdown-item" href="#">Log Out</a>
+                    </div>
                 </div>
             </li>
         </ul>
