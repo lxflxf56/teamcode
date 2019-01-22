@@ -7,9 +7,10 @@
     <script src="https://cdn.bootcss.com/angular.js/1.7.5/angular.min.js"></script>
     <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/4.2.1/css/bootstrap.min.css"
           crossorigin="anonymous">
-    <title>Title</title>
+    <title>Activate</title>
+    <base href="/" />
+    <script src="/js/global.js" crossorigin="anonymous"></script>
     <!-- Custom styles for this template -->
-
 </head>
 
 <body ng-app="myApp">
@@ -17,19 +18,33 @@
 <div ng-include="'/layout/nav.html'" ng-controller="accoutController"></div>
 
 <main class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
-    <div>
-        <h1>请激活邮箱</h1>
+    <div ng-controller="myCtrl">
+        <h1>{{message ||"激活邮箱"}}</h1>
     </div>
 </main>
 
 <footer class="text-muted" ng-include="'/layout/footer.html'"></footer>
 <script>
-
-
+    app.controller("myCtrl",function ($scope, $location, $http) {
+        var key=$location.search().key;
+        //console.log(key);
+        if (key!=null){
+            $http({
+                method: 'get',
+                url: '/api/activate?key='+key
+            }).then(function (resp) {
+                console.log(resp);
+                $scope.message="激活成功";
+            }, function (resp) {
+                alert(resp.data.title);
+                console.log(resp.data);
+            });
+        }
+    })
 </script>
 
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="/js/global.js" crossorigin="anonymous"></script>
+
 <script src="/js/account.js"></script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
