@@ -47,14 +47,14 @@
                 <div class="dropdown-menu" aria-labelledby="dropdown03">
                     <input ng-model="hasaccount" value="false" hidden>
                     <div ng-hide=!hasaccount>
-                        <a class="dropdown-item" href="/login.html">Log In</a>
-                        <a class="dropdown-item" href="/register.html">Register</a>
-                    </div>
-                    <div ng-hide=hasaccount>
                         <a class="dropdown-item" href="#">Setting</a>
                         <a class="dropdown-item" href="#">Profile</a>
                         <a class="dropdown-item" href="/changepassword.html">Password</a>
                         <a class="dropdown-item" href="#">Log Out</a>
+                    </div>
+                    <div ng-hide=hasaccount>
+                        <a class="dropdown-item" href="/login.html">Log In</a>
+                        <a class="dropdown-item" href="/register.html">Register</a>
                     </div>
                 </div>
             </li>

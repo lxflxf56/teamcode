@@ -1,38 +1,38 @@
 <!doctype html>
-<html lang="zh-cn">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-
-    <script src="https://cdn.bootcss.com/angular.js/1.7.5/angular.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/4.2.1/css/bootstrap.min.css"
+    <title>TeamCode</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/4.2.1/css/bootstrap.css"
           crossorigin="anonymous">
-    <title>主页</title>
+    <script src="https://cdn.bootcss.com/angular.js/1.7.5/angular.js"></script>
     <!-- Custom styles for this template -->
+    <!--<link href="css/cover.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="css/myform.css">
 
 </head>
 
-<body ng-app="">
-
-<div ng-include="'layout/nav.html'"></div>
-
-<main class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
-    <div>
-        <h1>内容</h1>
+<body ng-app="myApp">
+<div ng-include="'/layout/nav.html'" ng-controller="accoutController"></div>
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
+    <div class="login">
+     <h1>专注团队合作</h1>
     </div>
-</main>
+    <ng-include src="'/layout/footer.html'"/>
+</div>
+<script>
 
-<footer class="text-muted" ng-include="'layout/footer.html'"></footer>
 
-
-<!-- Placed at the end of the document so the pages load faster -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
-<script src="https://cdn.bootcss.com/twitter-bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</script>
+<script src="/js/global.js" crossorigin="anonymous"></script>
+<script src="/js/account.js"></script>
 </body>
 </html>

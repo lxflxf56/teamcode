@@ -1,4 +1,4 @@
-.login {
+.myform {
     display: -ms-flexbox;
     display: -webkit-box;
     display: flex;
@@ -36,7 +36,6 @@
     border-bottom-left-radius: 0;
 }
 .form-signin input[type="password"] {
-    margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }

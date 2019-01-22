@@ -1,7 +1,11 @@
 var app = angular.module("myApp",[]);
-var account=JSON.parse(sessionStorage.account);
+var seacc=sessionStorage.account;
+var account;
+if (seacc!=null){
+    account=JSON.parse(seacc);
+}
 app.controller('accoutController',function ($scope,$http) {
-    if (account==null){
+    if (account==null&&Authorization!=null){
         $http({
             method:'get',
             url:'/api/account',
@@ -13,12 +17,12 @@ app.controller('accoutController',function ($scope,$http) {
             account=resp.data;
             $scope.account=account;
             sessionStorage.setItem('account', JSON.stringify(account));
+            $scope.hasaccount=true;
         },function(resp){
-            window.location.href = '/login.html';
             console.log(resp);
         });
     }
     $scope.account=account;
-    $scope.hasaccount=true;
+
 });
 
