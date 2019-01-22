@@ -40,7 +40,7 @@
             <button class="btn btn-lg btn-primary btn-block" style="margin-top: 10px" type="submit">Register</button>
         </form>
     </div>
-    <ng-include src="'/layout/footer.html'"/>
+    <ng-include src="'/layout/footer.html'" ng-controller="accoutController"/>
 </div>
 <script>
     var app = angular.module("myApp", []);
@@ -68,5 +68,6 @@
         }
     });
 </script>
+<script src="/js/account.js"></script>
 </body>
 </html>

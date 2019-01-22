@@ -24,7 +24,12 @@
 </main>
 
 <footer class="text-muted" ng-include="'/layout/footer.html'"></footer>
+
 <script>
+    var app = angular.module("myApp", []);
+    app.config(['$locationProvider', function($locationProvider) {
+        $locationProvider.html5Mode(true);
+    }]);
     app.controller("myCtrl",function ($scope, $location, $http) {
         var key=$location.search().key;
         //console.log(key);

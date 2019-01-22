@@ -16,19 +16,22 @@
 
 <body ng-app="myApp">
 
-<div ng-include="'/layout/nav.html'"></div>
+<div ng-include="'/layout/nav.html'" ng-controller="accoutController"></div>
 
 <main class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
     <div>
         <h1>专注于团队合作</h1>
+        <a href="login.html">登录</a>
     </div>
 </main>
 
-<footer class="text-muted" ng-include="'/layout/footer.html'"></footer>
 
 
+<script>
+    var app = angular.module("myApp",[]);
+</script>
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="/js/global.js" crossorigin="anonymous"></script>
+<script src="/js/global.js"></script>
 <script src="/js/account.js"></script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"

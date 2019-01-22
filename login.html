@@ -21,7 +21,7 @@
 </head>
 
 <body ng-app="myApp">
-<div ng-include="'/layout/nav.html'"></div>
+<div ng-include="'/layout/nav.html'" ng-controller="accoutController"></div>
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
     <div class="myform">
         <form class="form-signin" ng-submit="submitForm()" ng-controller="loginController">
@@ -73,5 +73,6 @@
         }
     });
 </script>
+<script src="/js/account.js"></script>
 </body>
 </html>
