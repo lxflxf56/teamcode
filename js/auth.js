@@ -1,3 +1,3 @@
 if (Authorization ==null){
-    window.location.href=hostname+"/login.html";
+    window.location.href="/login.html";
 }
