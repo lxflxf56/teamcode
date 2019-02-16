@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="/favicon.ico">
+    <script src="https://cdn.bootcss.com/angular.js/1.7.5/angular.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/4.2.1/css/bootstrap.min.css"
+          crossorigin="anonymous">
+    <base href="/"/>
+    <title>Create Organization</title>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="css/myform.css">
+</head>
+
+<body ng-app="myApp">
+
+<div ng-include="'/layout/nav.html'" ng-controller="accoutController"></div>
+
+<main class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
+    <form ng-submit="submitForm()" ng-controller="formController">
+        <h1 class="h3 mb-3 font-weight-normal myinput">Create Organization</h1>
+        <input id="name" class="form-control col-md-8" placeholder="Organization Name" style="margin: 0 auto;"
+               ng-model="myform.name" required autofocus>
+        <input id="description" class="form-control col-md-8" placeholder="Organization Description" style="margin: 0 auto;"
+               ng-model="myform.description" required >
+        <input id="phone" class="form-control col-md-8" placeholder="Organization Phone" type="tel" style="margin: 0 auto;"
+               ng-model="myform.phone" required >
+        <textarea id="address" class="form-control col-md-8" placeholder="Organization Address" style="margin: 0 auto;"
+                  ng-model="myform.address" required></textarea>
+        <button class="btn btn-lg btn-primary btn-block col-md-8" style="margin-top: 10px;margin: 0 auto;" type="submit" >Create Organization</button>
+    </form>
+</main>
+
+<footer class="text-muted" ng-include="'/layout/footer.html'"></footer>
+<script>
+    var app = angular.module("myApp", []);
+    app.controller('formController', function ($scope, $http) {
+        $scope.submitForm = function () {
+            // console.log('enter submitForm');
+            $http({
+                method: 'post',
+                url: '/api/organization/create',
+                data: $scope.myform,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization':Authorization
+                }
+            }).then(function (resp) {
+                location.href="/organization"
+            }, function (resp) {
+                console.log(resp);
+                alert(resp.data.title);
+            });
+        }
+    });
+</script>
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/js/global.js" crossorigin="anonymous"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/account.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
